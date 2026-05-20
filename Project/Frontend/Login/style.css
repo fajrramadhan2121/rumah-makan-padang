@@ -1,0 +1,350 @@
+/* ══════════════════════════════════════
+   VARIABLES & RESET
+══════════════════════════════════════ */
+
+:root {
+    --bg: #0e0b07;
+    --bg2: #161009;
+    --surface: #1c1508;
+    --surface2: #231b0c;
+    --gold: #c9a84c;
+    --gold-light: #e2c47a;
+    --gold-dim: #7a6228;
+    --text: #f0e6d0;
+    --text-dim: #7a6e5a;
+    --text-muted: #4a4030;
+    --danger: #e05555;
+    --danger-bg: #2a1010;
+    --border: #2e2210;
+    --radius: 14px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+
+/* ══════════════════════════════════════
+   BACKGROUND
+══════════════════════════════════════ */
+
+.login-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.07) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(201, 168, 76, 0.04) 0%, transparent 50%);
+}
+
+.login-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient( 0deg, transparent, transparent 60px, rgba(201, 168, 76, 0.03) 60px, rgba(201, 168, 76, 0.03) 61px), repeating-linear-gradient( 90deg, transparent, transparent 60px, rgba(201, 168, 76, 0.03) 60px, rgba(201, 168, 76, 0.03) 61px);
+}
+
+
+/* ══════════════════════════════════════
+   WRAPPER
+══════════════════════════════════════ */
+
+.login-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: 860px;
+    max-width: calc(100vw - 32px);
+    min-height: 520px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--border);
+    animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ══════════════════════════════════════
+   PANEL KIRI (BRAND)
+══════════════════════════════════════ */
+
+.login-brand {
+    width: 340px;
+    flex-shrink: 0;
+    background: linear-gradient(160deg, #1a1105 0%, #0e0b07 100%);
+    border-right: 1px solid var(--border);
+    padding: 48px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-brand::before {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    right: -60px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201, 168, 76, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.brand-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.brand-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: var(--bg);
+    margin-bottom: 24px;
+    box-shadow: 0 8px 24px rgba(201, 168, 76, 0.3);
+}
+
+.brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 10px;
+}
+
+.brand-name span {
+    color: var(--gold);
+}
+
+.brand-tagline {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold-dim);
+    margin-bottom: 24px;
+}
+
+.brand-divider {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin-bottom: 20px;
+    border-radius: 2px;
+}
+
+.brand-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.7;
+}
+
+.brand-footer {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+
+/* ══════════════════════════════════════
+   PANEL KANAN (FORM)
+══════════════════════════════════════ */
+
+.login-card {
+    flex: 1;
+    background: var(--surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 40px;
+}
+
+.login-card-inner {
+    width: 100%;
+    max-width: 340px;
+}
+
+.login-header {
+    margin-bottom: 32px;
+}
+
+.login-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+}
+
+.login-header p {
+    font-size: 13px;
+    color: var(--text-dim);
+}
+
+
+/* ALERT */
+
+.alert-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--danger-bg);
+    border: 1px solid rgba(224, 85, 85, 0.3);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: var(--danger);
+    margin-bottom: 20px;
+    animation: fadeUp 0.3s ease both;
+}
+
+
+/* FORM GROUP */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+}
+
+.input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrap>i:first-child {
+    position: absolute;
+    left: 14px;
+    color: var(--gold-dim);
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.input-wrap input {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px 12px 40px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-wrap input::placeholder {
+    color: var(--text-muted);
+}
+
+.input-wrap input:focus {
+    border-color: var(--gold-dim);
+    box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
+}
+
+.btn-toggle-pw {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 4px;
+    transition: color 0.2s;
+}
+
+.btn-toggle-pw:hover {
+    color: var(--gold);
+}
+
+
+/* BUTTON LOGIN */
+
+.btn-login {
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--gold), #a07830);
+    border: none;
+    border-radius: 10px;
+    color: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
+}
+
+.btn-login:hover {
+    opacity: 0.92;
+    box-shadow: 0 6px 24px rgba(201, 168, 76, 0.4);
+}
+
+.btn-login:active {
+    transform: scale(0.98);
+}
+
+.btn-login:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 640px) {
+    .login-brand {
+        display: none;
+    }
+    .login-wrapper {
+        width: 100%;
+        min-height: 100vh;
+        border-radius: 0;
+    }
+    .login-card {
+        padding: 40px 24px;
+    }
+}
